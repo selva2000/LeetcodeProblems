@@ -4,8 +4,10 @@ public:
  
     
     bool canConstruct(string ransomNote, string magazine) {
+    
         
-        unordered_map<char, int> m;
+//This is one solution
+/*         unordered_map<char, int> m;
         
         for(int i=0; i<magazine.size(); i++){
             m[magazine[i]]++;
@@ -20,7 +22,14 @@ public:
             }
         }
         
-        return true;
+        return true;*/
+        
+        //using include() function.
+        //To use it we need tos ort it before
+        
+    sort(ransomNote.begin(), ransomNote.end());
+    sort(magazine.begin(), magazine.end());
+    return includes(magazine.begin(), magazine.end(), ransomNote.begin(), ransomNote.end());
         
     }
 };
