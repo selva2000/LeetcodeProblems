@@ -23,7 +23,7 @@ public:
         }*/
         
         int buy = prices[0];
-        int max_profit = 0;
+        /*int max_profit = 0;
         
         int n = prices.size();
         
@@ -40,7 +40,20 @@ public:
             }
         }
         
-        return max_profit;
+        return max_profit;*/
+        
+        //Kadane's Approach for asolving this problem
+        
+        int n = prices.size();
+        int max_current = 0;
+        int max_soFar = 0;
+        
+        for(int i=1; i<n; i++){
+            
+            max_current = max(0, max_current += prices[i] - prices[i-1]);
+            max_soFar = max(max_soFar, max_current);
+        }
+        return max_soFar;
         
     }
 };
