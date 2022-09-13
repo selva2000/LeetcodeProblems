@@ -30,6 +30,9 @@ public:
             {
                 if(target == targetSum)
                     pathFound = true;
+                // else{
+                //     target  -= root->val;
+                // }
             }
             else
             {
