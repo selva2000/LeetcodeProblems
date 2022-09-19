@@ -17,25 +17,32 @@ public:
         }
         return p->val == q->val && isSameTree(p->left, q->left) && isSameTree(p->right, q->right);*/
             
-       queue<TreeNode*> Q;
-        if(!p or !q) return p==q;       //If both roots are null
-        Q.push(p); Q.push(q);           //Push both the roots in the queue                  
-        while(!Q.empty())  {
-            TreeNode* left = Q.front(); Q.pop();                //Store one node in left and pop
-            TreeNode *right = Q.front(); Q.pop();               //Store other in right and pop
-            if(!left and !right) continue;                      //If both nodes are null -> continue
-            if(!left or !right) return false;                   //If one of them is null, simply return false
-            if(left->val != right->val) return false;           //If they are not equal, return false
+        TreeNode *left, *right;
+        if (!p or !q)
+            return p==q;
+        
+        queue<TreeNode*> q1;
+        q1.push(p);
+        q1.push(q);
+        while(!q1.empty()){
+            left = q1.front();
+            q1.pop();
+            right = q1.front();
+            q1.pop();
+            if (NULL == left && NULL == right)
+                continue;
+            if (NULL == left || NULL == right)
+                return false;
+            if (left->val != right->val)
+                return false;
+            q1.push(left->left);
+            q1.push(right->left);
             
-            //Push left childs of both nodes
-            Q.push(left->left);                         
-            Q.push(right->left);
-
-            //Push right child of both nodes
-            Q.push(left->right);
-            Q.push(right->right);
+            q1.push(left->right);
+            q1.push(right->right);
+            
         }
-        return true;  
+        return true;
         
     }
 };
