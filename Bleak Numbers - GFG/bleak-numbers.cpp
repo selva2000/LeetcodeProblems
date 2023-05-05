@@ -9,7 +9,7 @@ public:
 	int countSetBits(int x)
 {
     unsigned int count = 0;
-    while (x) {
+    while (x > 0) {
         if(x & 1 == 1) count++;
         x = x >> 1;
     }
