@@ -10,8 +10,8 @@ public:
 {
     unsigned int count = 0;
     while (x) {
-        x &= (x - 1);
-        count++;
+        if(x & 1 == 1) count++;
+        x = x >> 1;
     }
     return count;
 }
