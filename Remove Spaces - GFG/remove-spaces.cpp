@@ -19,7 +19,7 @@ class Solution
             id = s.find(" ");
         }
         
-        ans.push_back(s.substr(0, id));
+        ans.push_back(s.substr(0, s.size()));
         
         string res;
         
